@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="script.js"></script>
+    <title>Theory Organizer</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body onload="addEventListeners(); makeConceptsList(); makeTagsList();">
+    <div>
+      <h1>🐢 Theory Organizer</h1>
+      <p>Welcome to your Theory Organizer</p>
+    </div>
+    <div class="tab">
+      <button class="tablinks" onclick="openEntry(event, 'Concept')">Concept</button>
+      <button class="tablinks" onclick="openEntry(event, 'Example')">Example</button>
+      <button class="tablinks" onclick="openEntry(event, 'Idea')">Idea</button>
+      <button class="tablinks" onclick="hideDisplayCommonDiv()">+ Info</button>
+      <button class="tablinks" onclick="displaySearchSection()">Search</button>
+    </div>
+    <div id="container">
+    <div id="Concept" class="tabcontent">
+      <form name="concept" onSubmit="return false;">
+        <div id="parentConceptDiv" class="selectorDiv">
+          <label>Parent Concepts </label>
+          <input id="conceptInput" list="concepts" size="30" style="border: 1px solid #66faf0;"></input>
+          <button id="addParentConceptButton" type="button" onclick="addParentConcept();" class="addButton">Add</button>
+          <br>
+          <div id="parentConceptsSelected" name="parentConceptsSelected"></div>
+        </div>
+        <br>
+        <div>
+          <label>Concept </label>
+          <input id="conceptTitleInput" size="45" required style="border: 1px solid #f79900; font-size: 16px;"></input>
+        </div>
+        <br>
+        <div>
+          <textarea id="conceptContentInput" required></textarea>
+        </div>
+        <div class="selectorDiv">
+          <label>Tags </label>
+          <input id="tagInput" list="tags" size="15" style="border: 1px solid #66faf0;"></input>
+          <button id="addTagButton" type="button" onclick="addTag();" class="addButton">Add</button>
+          <div id="selectedTags"></div>
+        </div>
+        <br>
+        <div>
+          <button id="insertConceptButton" type="button" onclick="insertConcept();" class="insertButton">Insert Concept</button>
+        </div>
+      </form>
+    </div>
+    <div id="Example" class="tabcontent">
+      <form name="example" onSubmit="return false;">
+        <div>
+          <label>Related Concept </label>
+          <input id="relatedConceptInput" list="concepts" size="30" required style="border: 1px solid #f79900;"></input>
+        </div>
+        <br>
+        <div>
+          <label>Example Text </label>
+          <br>
+          <br>
+          <textarea id="exampleTextInput" required style="border: 1px solid #f79900;"></textarea>
+        </div>
+        <br>
+        <div>
+          <button id="insertExampleButton" type="button" onclick="insertExample();" class="insertButton">Insert Example</button>
+        </div>
+      </form>
+    </div>
+    <div id="Idea" class="tabcontent">
+      <form name="idea" onSubmit="return false;">
+        <div class=selectorDiv>
+          <label>Related Concepts </label>
+          <input id="relConceptInput" list="concepts" size="30" required style="border: 1px solid #f79900;"></input>
+          <button id="addRelatedConceptButton" type="button" onclick="addRelatedConcept();" class="addButton">Add</button>
+          <br>
+          <div id="selectedRelatedConcepts"></div>
+        </div>
+        <br>
+        <div>
+          <label>Idea </label>
+          <br>
+          <br>
+          <textarea id="ideaInput" required style="border: 1px solid #f79900;"></textarea>
+        </div>
+        <br>
+        <div>
+          <button id="insertIdeaButton" type="button" onclick="insertIdea();" class="insertButton">Insert Idea</button>
+        </div>
+      </form>
+    </div>
+    <div id="commonDiv">
+    <div id="imagesSection">
+    <h4 class="commonDivTitle" style="color: #1fd1ae;">Images</h4>
+    <div id="dropZone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+      <p>Drag and drop your images in here</p>
+    </div>
+    <div id="droppedImages"></div>
+  </div>
+    <div id="equationsSection">
+      <h4 class="commonDivTitle" style="color: #bd8b28;">Equations</h4>
+      <label>Equation Title </label>
+      <input id="equationTitle" size="45" style="border: 1px solid #ffe880"></input>
+      <br>
+      <label>Equation Text </label>
+      <textarea id="equationText"></textarea>
+      <br>
+      <label>Equation Code </label>
+      <textarea id="equationCode"></textarea>
+      <br>
+      <button id="addEquationButton" type="button" onclick="addEquation();">Add Equation</button>
+      <div id="renderedEquation"></div>
+    </div>
+    <div id="sourcesSection">
+      <h4 class="commonDivTitle" style="color: #57bd28;">Sources</h4>
+      <label>Source Title </label>
+      <input id="sourceTitle" size="45" style="border: 1px solid #a5f04f"></input>
+      <br>
+      <label>Source Text </label>
+      <textarea id="sourceText"></textarea>
+      <br>
+      <label>Source Link </label>
+      <input id="sourceLink" size="45" style="border: 1px solid #a5f04f"></input>
+      <br>
+      <button id="addSourceButton" type="button" onclick="addSource();">Add Source</button>
+      <div id="listedSource"></div>
+    </div>
+  </div>
+</div>
+<div id="searchSection">
+  <label>Select the concept you want to know about </label>
+  <input id="searchConceptInput" list="concepts" onclick="cleanSearchInput();" size="30" style="border: 1px solid #66faf0;"></input>
+  <button id="searchConceptButton" type="button" onclick="searchConcept();" class="searchButton">Search</button>
+</div>
+<div id="displaySection"></div>
+    <!-- <div id="math">\[mc\]</div> -->
+    <!-- <math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msqrt><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></msqrt></math> -->
+    <datalist id="concepts"></datalist>
+    <datalist id="tags"></datalist>
+  </body>
+</html>

@@ -1,0 +1,458 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: auto;
+  max-width: 1000px;
+  padding: 2rem;
+}
+
+#container {
+  display: flex;
+  width: 1000px;
+}
+
+img {
+  width: 250px;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  width: 1050px;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  width: 80px;
+}
+
+.imageSpan {
+  display: flex;
+  border: 1px dotted #7ee0da;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+/*.tab button.active {
+  background-color: #ccc;
+}
+/*
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  max-width: 500px;
+  min-width: 500px;
+}
+
+.tabcontent {
+  animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+#dropZone {
+  border: 1px solid #7ee0da;
+  width:  465px;
+  height: 50px;
+  padding: 5px 5px 5px 5px;
+  text-align: center;
+  font-size: 12px;
+  margin: 10px;
+  color: #7ee0da;
+}
+
+#dropZone:hover {
+  background-color: #7ee0da;
+  color: white;
+}
+
+label {
+  margin-left: 5px;
+  padding-right: 5%;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.selectorDiv {
+  line-height: 40px;
+}
+
+.addButton {
+  background-color: #4CAF50; /* Green */
+  border: 1px solid #328d50;
+  color: white;
+  padding: 4px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 11px;
+  margin: 1%;
+}
+
+.addButton:hover {
+  background-color: #328d50;
+}
+
+.parentConceptButton {
+  background-color: #dbffff;
+  border: 1px solid blue;
+  padding: 6px;
+  margin: 2px;
+  font-size: 11px;
+}
+
+.parentConceptButton:hover {
+  background-color: #a6ffff;
+}
+
+.relConceptButton {
+  background-color: #c7ffd2;
+  border: 1px solid green;
+  padding: 6px;
+  margin: 2px;
+  font-size: 11px;
+}
+
+.relConceptButton:hover {
+  background-color: #8bfca1;
+}
+
+.addedTagButton {
+  background-color: #595c66;
+  padding: 6px;
+  margin: 2px;
+  color: white;
+  font-size: 11px;
+}
+
+.addedTagButton:hover {
+  background-color: #a8abb5;
+}
+
+.insertButton {
+  background-color: #f79900;
+  border: 1px solid #ff6200;
+  padding: 6px 12px;
+  color: white;
+  float: right;
+}
+
+.insertButton:hover {
+  background-color: #ff6200;
+}
+
+#conceptContentInput{
+  padding: 5px 5px 5px 5px;
+  width: 480px;
+  height: 150px;
+  font-size: 12pt;
+  font-family: inherit;
+  border: 1px solid #f79900;
+}
+
+#exampleTextInput{
+  padding: 5px 5px 5px 5px;
+  width: 480px;
+  height: 50px;
+  font-size: 12pt;
+  font-family: inherit;
+}
+
+#parentConceptsSelected {
+  padding: 5px 5px 5px 5px;
+  width: 480px;
+  height: 32px;
+  border: 1px solid #ccc;
+}
+
+#selectedTags {
+  padding: 5px 5px 5px 5px;
+  width: 480px;
+  height: 32px;
+  border: 1px solid #ccc;
+}
+
+#selectedRelatedConcepts {
+  padding: 5px 5px 5px 5px;
+  width: 470px;
+  height: 25px;
+  border: 1px solid #ccc;
+}
+
+#ideaInput{
+    padding: 5px 5px 5px 5px;
+    width: 480px;
+    height: 150px;
+    font-size: 12pt;
+    font-family: inherit;
+}
+
+#sourceText{
+    padding: 5px 5px 5px 5px;
+    margin-left: 5px;
+    width: 460px;
+    height: 60px;
+    font-size: 10pt;
+    font-family: Arial;
+    border: 1px solid #a5f04f;
+}
+
+#commonDiv {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  max-width: 500px;
+  min-width: 500px;
+}
+
+.commonDivTitle {
+  text-align: center;
+  padding-top: 10px;
+  font-style: italic;
+  font-size: 13px;
+}
+
+#searchSection {
+  display: none;
+  margin: 10px;
+}
+
+#displaySection {
+  margin: 10px;
+  border: 1px solid #66faf0;
+  padding: 10px 10px 10px 10px;
+  width: 1000px;
+}
+
+#parentConceptsSection {
+  height: 50px;
+}
+
+#parentConceptsSection button {
+  background-color: #dbffff;
+  border: 1px solid blue;
+  padding: 6px;
+  margin: 10px;
+  font-size: 11px;
+}
+
+#childConceptsSection {
+  height: 50px;
+}
+
+#childConceptsSection button {
+  background-color: #c7ffd2;
+  border: 1px solid green;
+  padding: 6px;
+  margin: 10px;
+  font-size: 11px;
+}
+
+#tagsSection {
+  margin-top: 20px;
+  height: 50px;
+}
+
+#tagsSection button {
+  background-color: #595c66;
+  padding: 6px;
+  margin: 10px;
+  color: white;
+  font-size: 11px;
+}
+
+#mainDisplaySection {
+  padding: 0px 5px 5px 5px;
+}
+
+#imagesDisplaySection {
+  padding: 10px 10px 10px 10px;
+  margin-top: 20px;
+}
+
+#imagesDisplaySection2 {
+  padding: 10px 10px 10px 10px;
+  margin-top: 20px;
+}
+
+#imagesDisplaySection3 {
+  padding: 10px 10px 10px 10px;
+  margin-top: 20px;
+}
+
+#equationsDisplaySection {
+  padding: 10px 10px 10px 10px;
+  margin-top: 20px;
+}
+
+#equationsDisplaySection2 {
+  padding: 10px 10px 10px 10px;
+  margin-top: 20px;
+}
+
+#equationsDisplaySection3 {
+  padding: 10px 10px 10px 10px;
+  margin-top: 20px;
+}
+
+.imageDisplayed {
+  margin: 2px;
+  padding: 2px 2px 2px 2px;
+  border: 1px solid #66faf0;
+  width: 600px;
+}
+
+#sourcesDisplaySection {
+  font-family: serif;
+  border: 1px dotted #66faf0;
+  margin-top: 20px;
+  padding: 10px 10px 10px 10px;
+}
+
+#sourceDisplaySection2 {
+  font-family: serif;
+  border: 1px dotted #66faf0;
+  margin-top: 20px;
+  padding: 10px 10px 10px 10px;
+}
+
+#sourceDisplaySection3 {
+  font-family: serif;
+  border: 1px dotted #66faf0;
+  margin-top: 20px;
+  padding: 10px 10px 10px 10px;
+}
+
+
+#imagesSection {
+  background-color: #f0fffe;
+  line-height: 25px;
+}
+
+#equationsSection {
+  background-color: #fffebf;
+  line-height: 25px;
+  padding: 0px 5px 5px 5px;
+}
+
+#sourcesSection {
+  background-color: #dafcb3;
+  line-height: 25px;
+  padding: 0px 5px 5px 5px;
+}
+
+.imageSpan img {
+  margin: 10px;
+}
+
+.imageDescription {
+  width: 205px;
+  height: 170px;
+}
+
+#equationText {
+  width: 470px;
+  height: 50px;
+  margin: 5px;
+  padding: 5px 5px 5px 5px;
+  border: 1px solid #ffe880;
+  font-family: Arial;
+}
+
+#equationCode {
+  width: 470px;
+  height: 50px;
+  margin: 5px;
+  padding: 5px 5px 5px 5px;
+  border: 1px solid #ffe880;
+}
+
+#addEquationButton {
+  background-color: #ffdf63;
+  border: 1px solid #f79900;
+  padding: 6px 12px;
+  color: #f79900;
+  margin: 5px 5px 20px 5px;
+}
+
+#addEquationButton:hover {
+  background-color: #f79900;
+  color: white;
+}
+
+
+#addSourceButton {
+  background-color: #a5f04f;
+  border: 1px solid #1c7307;
+  padding: 6px 12px;
+  color: #1c7307;
+  margin: 10px 5px 20px 5px;
+}
+
+#addSourceButton:hover {
+  background-color: #7dc926;
+  color: white;
+}
+
+.equationSpan {
+  border: 1px dotted #cafcb3;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.sourceSpan {
+  border: 1px dotted #1c7307;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #b8f595;
+  line-height: 0.8;
+}
+
+.equationDisplayZone {
+  background-color: white;
+  margin: 10px;
+  padding: 5px 5px 5px 5px;
+}
+
+.equationTitles {
+  margin-left: 4px;
+  font-style: italic;
+  color: #734807;
+}
+
+.sourceTitles {
+  margin-left: 10px;
+  color: #1c7307;
+}
+
+.imageTitles {
+  color: #1fd1ae;
+}
+
+.equationTexts {
+  font-style: italic;
+  margin-left: 10px;
+}
